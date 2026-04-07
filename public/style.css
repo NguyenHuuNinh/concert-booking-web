@@ -49,8 +49,8 @@ a {
 
 /* --- Phần Giới thiệu (Hero Section) --- */
 .hero {
-    /* Dùng một ảnh nền concert miễn phí từ Unsplash */
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+    
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://png.pngtree.com/element_our/png_detail/20180911/mic-icon-design-vector-png_92159.jpg') center/cover;
     height: 50vh;
     display: flex;
     flex-direction: column;
