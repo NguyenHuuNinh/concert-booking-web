@@ -1,0 +1,178 @@
+/* --- Reset & Cơ bản --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    background-color: #f4f7f6;
+    color: #333;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- Thanh điều hướng (Navbar) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a2e;
+    padding: 15px 50px;
+    color: white;
+}
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e94560;
+}
+.nav-links a {
+    color: white;
+    margin-left: 20px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.nav-links a:hover {
+    color: #e94560;
+}
+.btn-login-nav {
+    border: 1px solid white;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+.btn-login-nav:hover {
+    background-color: white;
+    color: #1a1a2e;
+}
+
+/* --- Phần Giới thiệu (Hero Section) --- */
+.hero {
+    /* Dùng một ảnh nền concert miễn phí từ Unsplash */
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+}
+.hero h1 { font-size: 3rem; margin-bottom: 15px; }
+.hero p { font-size: 1.2rem; margin-bottom: 25px; max-width: 600px; }
+
+/* --- Phần Danh sách Vé (Concert Cards) --- */
+.section-title {
+    text-align: center;
+    margin: 50px 0 30px;
+    font-size: 2rem;
+    color: #1a1a2e;
+}
+.concert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 50px 50px;
+}
+.concert-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+.concert-card:hover {
+    transform: translateY(-5px); /* Hiệu ứng nổi lên khi di chuột */
+}
+.concert-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.concert-info { padding: 20px; }
+.concert-info h3 { font-size: 1.4rem; margin-bottom: 10px; }
+.concert-info p { color: #7f8c8d; margin-bottom: 8px; font-size: 0.95rem; }
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e94560;
+    margin: 15px 0;
+}
+.btn-buy {
+    display: block;
+    text-align: center;
+    background-color: #0f3460;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.btn-buy:hover { background-color: #1a1a2e; }
+
+/* --- Khung Đăng nhập (Auth Form) --- */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 65px); /* Trừ đi chiều cao của navbar */
+}
+.auth-box {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+.auth-box h2 { color: #1a1a2e; margin-bottom: 10px; }
+.auth-box p { color: #7f8c8d; margin-bottom: 25px; }
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #1a1a2e;
+}
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+.btn-submit {
+    width: 100%;
+    background-color: #e94560;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.btn-submit:hover { background-color: #d1304b; }
+.divider {
+    margin: 20px 0;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+.btn-facebook {
+    background-color: #1877f2;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-facebook:hover { background-color: #145dbf; }
