@@ -49,16 +49,14 @@ a {
 
 /* --- Phần Giới thiệu (Hero Section) --- */
 .hero {
-    
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://png.pngtree.com/element_our/png_detail/20180911/mic-icon-design-vector-png_92159.jpg') center/cover;
-    height: 50vh;
+    /* Thêm hoặc sửa các dòng này */
+    height: auto; 
+    min-height: 50vh; /* Đổi height thành min-height */
+    padding: 80px 20px; /* Tăng khoảng cách trên dưới để đẩy khung to ra */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
-    text-align: center;
-    padding: 0 20px;
 }
 .hero h1 { font-size: 3rem; margin-bottom: 15px; }
 .hero p { font-size: 1.2rem; margin-bottom: 25px; max-width: 600px; }
@@ -176,3 +174,78 @@ a {
     font-weight: bold;
 }
 .btn-facebook:hover { background-color: #145dbf; }
+/* --- CSS CHO 2 NÚT BẤM (Mua vé & Chi tiết) --- */
+.button-group {
+    display: flex; /* Xếp 2 nút nằm ngang */
+    gap: 10px; /* Khoảng cách giữa 2 nút */
+    margin-top: 15px;
+}
+
+.btn-buy, .btn-detail {
+    flex: 1; /* Mỗi nút chiếm chính xác 50% chiều rộng */
+    padding: 12px 0;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+/* Nút Mua Vé màu Xanh đậm giống ảnh của bạn */
+.btn-buy { background-color: #0d3b66; }
+.btn-buy:hover { background-color: #092a4a; }
+
+/* Nút Chi Tiết màu Đỏ */
+.btn-detail { background-color: #e63946; }
+.btn-detail:hover { background-color: #c1121f; }
+
+
+/* --- CSS CHO CỬA SỔ NỔI (MODAL CHI TIẾT) --- */
+.modal {
+    display: none; /* Mặc định ẩn */
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.6); /* Nền đen mờ */
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto; /* Canh giữa màn hình */
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 800px;
+    position: relative;
+    animation: fadeIn 0.3s;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px; right: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+}
+.close-btn:hover { color: red; }
+
+/* Bố cục bên trong Modal: Thông tin bên trái, Map bên phải */
+.modal-body {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.modal-info { flex: 1; line-height: 1.8; }
+.modal-map { flex: 1; border-radius: 10px; overflow: hidden; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

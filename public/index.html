@@ -28,43 +28,151 @@
         <div class="concert-grid">
             
             <div class="concert-card">
-                <img src="https://images.unsplash.com/photo-1540039155732-61ee024fb70a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Concert 1" class="concert-img">
-                <div class="concert-info">
-                    <h3>The Eras Tour 2026</h3>
-                    <p>📍 Sân vận động Quốc gia Mỹ Đình</p>
-                    <p>📅 20 Tháng 10, 2026</p>
-                    <p>Hạng vé: Standard & VIP</p>
-                    <div class="price">Từ 1.500.000 VNĐ</div>
-                    <a href="#" class="btn-buy">Mua Vé Ngay</a>
-                </div>
-            </div>
+    <img src="https://images.unsplash.com/photo-1540039155732-61ee024facfa?w=500" alt="Concert">
+    <div class="concert-info">
+        <h3>The Eras Tour 2026</h3>
+        <p>📍 Sân vận động Quốc gia Mỹ Đình</p>
+        <p>📅 20 Tháng 10, 2026</p>
+        <div class="price" style="color: #e63946; font-weight: bold; margin-top: 10px; margin-bottom: 15px;">
+            Từ 1.500.000 VNĐ
+        </div>
+        
+        <div class="button-group">
+            <button class="btn-buy">Mua Vé</button>
+            <button class="btn-detail" onclick="openModal('eras')">Chi Tiết</button>
+        </div>
+    </div>
+</div>
 
             <div class="concert-card">
                 <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Concert 2" class="concert-img">
                 <div class="concert-info">
                     <h3>Rock Symphony Night</h3>
-                    <p>📍 Nhà hát Lớn TP.HCM</p>
-                    <p>📅 05 Tháng 11, 2026</p>
+                    <p> Nhà hát Lớn TP.HCM</p>
+                    <p>05 Tháng 11, 2026</p>
                     <p>Hạng vé: Early Bird, Standard</p>
                     <div class="price">Từ 850.000 VNĐ</div>
-                    <a href="#" class="btn-buy">Mua Vé Ngay</a>
                 </div>
+                <div class="button-group">
+            <button class="btn-buy">Mua Vé</button>
+            <button class="btn-detail" onclick="openModal('eras')">Chi Tiết</button>
+        </div>
             </div>
 
             <div class="concert-card">
                 <img src="https://images.unsplash.com/photo-1470229722913-7c090be5c560?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Concert 3" class="concert-img">
                 <div class="concert-info">
                     <h3>Indie Music Festival</h3>
-                    <p>📍 Phố đi bộ Nguyễn Huệ</p>
-                    <p>📅 12 Tháng 12, 2026</p>
+                    <p> Phố đi bộ Nguyễn Huệ</p>
+                    <p> 12 Tháng 12, 2026</p>
                     <p>Hạng vé: Free Standing</p>
                     <div class="price">Từ 300.000 VNĐ</div>
-                    <a href="#" class="btn-buy">Mua Vé Ngay</a>
                 </div>
+                <div class="button-group">
+            <button class="btn-buy">Mua Vé</button>
+            <button class="btn-detail" onclick="openModal('eras')">Chi Tiết</button>
+        </div>
             </div>
 
         </div>
     </section>
+    <div id="concertModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Tên Concert</h2>
+            <div class="modal-body">
+                <div class="modal-info">
+                    <p>🎤 <strong>Ca sĩ:</strong> <span id="modal-singers">Đang cập nhật...</span></p>
+                    <p>📍 <strong>Địa điểm:</strong> <span id="modal-location">Đang cập nhật...</span></p>
+                    <p>📅 <strong>Thời gian:</strong> <span id="modal-date">Đang cập nhật...</span></p>
+                    <p>💰 <strong>Giá vé chi tiết:</strong> <span id="modal-price">Đang cập nhật...</span></p>
+                    <br>
+                    <button class="btn-buy" style="width: 100%;">Tiếp tục Mua Vé</button>
+                </div>
+                <div class="modal-map">
+                    <iframe id="modal-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.325316270415!2d106.70222831526038!3d10.772589592323861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f4139268f75%3A0xc64e10b271d4df1f!2zTmjDoCBIw6F0IEzhu5tuIFRow6BuaCBQaOG7kSBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1683262018868!5m2!1svi!2s" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let allConcerts = []; // Biến lưu trữ dữ liệu lấy từ API
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchConcerts();
+        });
+
+        function fetchConcerts() {
+            // Thay đường dẫn này bằng đường dẫn API của bạn nếu cần
+            fetch('http://localhost:3000/api/concerts')
+                .then(response => response.json())
+                .then(data => {
+                    allConcerts = data; // Lưu dữ liệu vào biến global
+                    const concertList = document.getElementById('concert-list');
+                    let html = '';
+                    
+                    data.forEach(concert => {
+                        html += `
+                        <div class="concert-card">
+                            <img src="${concert.image_url}" alt="${concert.title}">
+                            <div class="concert-info">
+                                <h3>${concert.title}</h3>
+                                <p style="color: #666; font-size: 0.9em;">${concert.location}</p>
+                                <p style="color: #666; font-size: 0.9em;">${concert.date}</p>
+                                <div class="price" style="color: #e63946; font-weight: bold; margin-top: 10px;">${concert.price}</div>
+                                
+                                <div class="button-group">
+                                    <button class="btn-buy" onclick="buyTicket(${concert.id})">Mua Vé Ngay</button>
+                                    <button class="btn-detail" onclick="openModal(${concert.id})">Chi Tiết</button>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                    });
+                    concertList.innerHTML = html;
+                })
+                .catch(error => console.error('Lỗi khi lấy dữ liệu:', error));
+        }
+
+        // Hàm Mở Modal Chi tiết
+        function openModal(id) {
+            // Tìm sự kiện có id tương ứng trong mảng dữ liệu
+            const concert = allConcerts.find(c => c.id === id);
+            if (!concert) return;
+
+            // Đổ dữ liệu vào Modal
+            document.getElementById('modal-title').innerText = concert.title;
+            document.getElementById('modal-location').innerText = concert.location;
+            document.getElementById('modal-date').innerText = concert.date;
+            document.getElementById('modal-price').innerText = concert.price;
+            
+            /* Lưu ý: Vì database hiện tại của bạn chưa có cột 'singers' 
+               nên mình để mặc định. Về sau bạn thêm cột này vào DB thì đổi thành concert.singers nhé! */
+            document.getElementById('modal-singers').innerText = "Đang chờ công bố dàn Line-up...";
+
+            // Hiển thị Modal
+            document.getElementById('concertModal').style.display = 'block';
+        }
+
+        // Hàm Đóng Modal
+        function closeModal() {
+            document.getElementById('concertModal').style.display = 'none';
+        }
+
+        // Đóng Modal khi click ra ngoài vùng xám
+        window.onclick = function(event) {
+            const modal = document.getElementById('concertModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Hàm xử lý khi bấm nút Mua Vé
+        function buyTicket(id) {
+            alert("Đang chuyển hướng đến trang thanh toán cho vé số: " + id);
+            // Sau này bạn sẽ dùng window.location.href = '/checkout?id=' + id;
+        }
+    </script>
 
 </body>
 </html>
