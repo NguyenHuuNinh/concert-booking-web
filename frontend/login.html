@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">MUSIC TICKET</div>
+        
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <a href="login.html" class="btn-login">Login</a>
+        </div>
+        
+    </nav>
+
+    <div class="auth-container">
+        <div class="auth-box">
+            <h2>Login</h2>
+            <p>Welcome back! Please login to book your tickets.</p>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Your password" required>
+                </div>
+                
+                <button type="submit" class="btn-submit">Login</button>
+            </form>
+
+            <div class="divider">Or</div>
+
+            <button class="btn-facebook">
+                 Continue with Facebook
+            </button>
+
+            <p style="margin-top: 25px; font-size: 0.95rem; color: #666;">
+                Don't have account yet? 
+                <a href="register.html" style="color: #e94560; font-weight: bold;">Register now</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

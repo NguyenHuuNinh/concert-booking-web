@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Events - MUSIC TICKET</title>
+</head>
+<body>
+   <nav class="navbar">
+        <div class="logo">MUSIC TICKET</div>
+        
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <a href="login.html" class="btn-login">Login</a>
+        </div>
+    </nav>
+    
+    <section id="concerts">
+        <h2 class="section-title">Featured Events</h2>
+        <div class="concert-grid">
+            
+            <div class="concert-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI0UbRSnBklz1RzFmbRbOfTX3IT3qYfsyBtA&s" alt="Concert">
+                <div class="concert-info">
+                    <h3>Son Tung Concert</h3>
+                    <p> My Dinh National Stadium</p>
+                    <p> October 20, 2026</p>
+                    <div class="price" style="color: #e63946; font-weight: bold; margin-top: 10px; margin-bottom: 15px;">
+                        From 1,500,000 VND
+                    </div>
+                    
+                    <div class="button-group">
+                        <button class="btn-buy">Buy Ticket</button>
+                        <button class="btn-detail" onclick="openModal('eras')">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="concert-card">
+                <img src="https://vcdn1-giaitri.vnecdn.net/2025/11/07/jack-jpeg-1762516711-7017-1762-6471-4359-1762517797.jpg?w=500&h=300&q=100&dpr=1&fit=crop&s=vmq5xkGEz4loWNCvspJ7lg" alt="Concert 2" class="concert-img">
+                <div class="concert-info">
+                    <h3>Jack Concert</h3>
+                    <p> Ho Chi Minh City Opera House</p>
+                    <p> November 05, 2026</p>
+                    <p>Ticket tier: Early Bird, Standard</p>
+                    <div class="price" style="color: #e63946; font-weight: bold; margin-top: 10px; margin-bottom: 15px;">
+                        From 850,000 VND
+                    </div>
+                    
+                    <div class="button-group">
+                        <button class="btn-buy">Buy Ticket</button>
+                        <button class="btn-detail" onclick="openModal('eras')">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="concert-card">
+                <img src="https://s3-api.fpt.vn/fptvn-storage/2025-11-12/1762945356_concert-anh-trai-say-hi-mua-21.jpg" alt="Concert 3" class="concert-img">
+                <div class="concert-info">
+                    <h3>Anh Trai Say Hi</h3>
+                    <p> Nguyen Hue Walking Street</p>
+                    <p> December 12, 2026</p>
+                    <p>Ticket tier: Free Standing</p>
+                    <div class="price" style="color: #e63946; font-weight: bold; margin-top: 10px; margin-bottom: 15px;">
+                        From 300,000 VND
+                    </div>
+                    
+                    <div class="button-group">
+                        <button class="btn-buy">Buy Ticket</button>
+                        <button class="btn-detail" onclick="openModal('eras')">Details</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+</body>
+</html>
