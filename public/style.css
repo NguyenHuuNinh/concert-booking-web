@@ -19,7 +19,7 @@ a {
     justify-content: space-between;
     align-items: center;
     background-color: #1a1a2e;
-    padding: 15px 50px;
+    padding: 15px 15px;
     color: white;
 }
 .navbar .logo {
@@ -49,12 +49,11 @@ a {
 /* --- Phần Giới thiệu (Hero Section) --- */
 .hero {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://sgv.edu.vn/wp-content/uploads/2025/07/Ve-GA-concert-la-gi-1024x576.jpg');
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: white; 
-    min-height: 50vh; 
-    padding: 80px 20px; 
+    height: calc(100vh - 70px); 
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+   <nav class="navbar">
+        <div class="logo">MUSIC TICKET</div>
+        
+        <div class="nav-links">
+            <a href="index.html"">Trang chủ</a>
+            <a href="events.html">Sự kiện</a>
+            <a href="login.html" class="btn-login">Đăng nhập</a>
+        </div>
+        </nav>
+     <section id="concerts">
+        <h2 class="section-title">Sự Kiện Nổi Bật</h2>
+        <div class="concert-grid">
+            
+            <div class="concert-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI0UbRSnBklz1RzFmbRbOfTX3IT3qYfsyBtA&s" alt="Concert">
+    <div class="concert-info">
+        <h3>Son Tung Concert</h3>
+        <p>📍 Sân vận động Quốc gia Mỹ Đình</p>
+        <p>📅 20 Tháng 10, 2026</p>
+        <div class="price" style="color: #e63946; font-weight: bold; margin-top: 10px; margin-bottom: 15px;">
+            Từ 1.500.000 VNĐ
+        </div>
+        
+        <div class="button-group">
+            <button class="btn-buy">Mua Vé</button>
+            <button class="btn-detail" onclick="openModal('eras')">Chi Tiết</button>
+        </div>
+    </div>
+</div>
+
+            <div class="concert-card">
+                <img src="https://vcdn1-giaitri.vnecdn.net/2025/11/07/jack-jpeg-1762516711-7017-1762-6471-4359-1762517797.jpg?w=500&h=300&q=100&dpr=1&fit=crop&s=vmq5xkGEz4loWNCvspJ7lg" alt="Concert 2" class="concert-img">
+                <div class="concert-info">
+                    <h3>Jack Concert</h3>
+                    <p> Nhà hát Lớn TP.HCM</p>
+                    <p>05 Tháng 11, 2026</p>
+                    <p>Hạng vé: Early Bird, Standard</p>
+                    <div class="price">Từ 850.000 VNĐ</div>
+                </div>
+                <div class="button-group">
+            <button class="btn-buy">Mua Vé</button>
+            <button class="btn-detail" onclick="openModal('eras')">Chi Tiết</button>
+        </div>
+            </div>
+
+            <div class="concert-card">
+                <img src="https://s3-api.fpt.vn/fptvn-storage/2025-11-12/1762945356_concert-anh-trai-say-hi-mua-21.jpg" alt="Concert 3" class="concert-img">
+                <div class="concert-info">
+                    <h3>Anh Trai Say Hi</h3>
+                    <p> Phố đi bộ Nguyễn Huệ</p>
+                    <p> 12 Tháng 12, 2026</p>
+                    <p>Hạng vé: Free Standing</p>
+                    <div class="price">Từ 300.000 VNĐ</div>
+                </div>
+                <div class="button-group">
+            <button class="btn-buy">Mua Vé</button>
+            <button class="btn-detail" onclick="openModal('eras')">Chi Tiết</button>
+        </div>
+            </div>
+
+        </div>
+    </section>
+    <div id="concertModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Tên Concert</h2>
+            <div class="modal-body">
+                <div class="modal-info">
+                    <p>🎤 <strong>Ca sĩ:</strong> <span id="modal-singers">Đang cập nhật...</span></p>
+                    <p>📍 <strong>Địa điểm:</strong> <span id="modal-location">Đang cập nhật...</span></p>
+                    <p>📅 <strong>Thời gian:</strong> <span id="modal-date">Đang cập nhật...</span></p>
+                    <p>💰 <strong>Giá vé chi tiết:</strong> <span id="modal-price">Đang cập nhật...</span></p>
+                    <br>
+                    <button class="btn-buy" style="width: 100%;">Tiếp tục Mua Vé</button>
+                </div>
+                <div class="modal-map">
+                    <iframe id="modal-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.325316270415!2d106.70222831526038!3d10.772589592323861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f4139268f75%3A0xc64e10b271d4df1f!2zTmjDoCBIw6F0IEzhu5tuIFRow6BuaCBQaOG7kSBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1683262018868!5m2!1svi!2s" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let allConcerts = []; // Biến lưu trữ dữ liệu lấy từ API
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchConcerts();
+        });
+
+        function fetchConcerts() {
+            // Thay đường dẫn này bằng đường dẫn API của bạn nếu cần
+            fetch('http://localhost:3000/api/concerts')
+                .then(response => response.json())
+                .then(data => {
+                    allConcerts = data; // Lưu dữ liệu vào biến global
+                    const concertList = document.getElementById('concert-list');
+                    let html = '';
+                    
+                    data.forEach(concert => {
+                        html += `
+                        <div class="concert-card">
+                            <img src="${concert.image_url}" alt="${concert.title}">
+                            <div class="concert-info">
+                                <h3>${concert.title}</h3>
+                                <p style="color: #666; font-size: 0.9em;">${concert.location}</p>
+                                <p style="color: #666; font-size: 0.9em;">${concert.date}</p>
+                                <div class="price" style="color: #e63946; font-weight: bold; margin-top: 10px;">${concert.price}</div>
+                                
+                                <div class="button-group">
+                                    <button class="btn-buy" onclick="buyTicket(${concert.id})">Mua Vé Ngay</button>
+                                    <button class="btn-detail" onclick="openModal(${concert.id})">Chi Tiết</button>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                    });
+                    concertList.innerHTML = html;
+                })
+                .catch(error => console.error('Lỗi khi lấy dữ liệu:', error));
+        }
+
+
+        function openModal(id) {
+        
+            const concert = allConcerts.find(c => c.id === id);
+            if (!concert) return;
+
+            // Đổ dữ liệu vào Modal
+            document.getElementById('modal-title').innerText = concert.title;
+            document.getElementById('modal-location').innerText = concert.location;
+            document.getElementById('modal-date').innerText = concert.date;
+            document.getElementById('modal-price').innerText = concert.price;
+            
+            
+            document.getElementById('modal-singers').innerText = "Đang chờ công bố dàn Line-up...";
+
+            document.getElementById('concertModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('concertModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('concertModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        function buyTicket(id) {
+            alert("Đang chuyển hướng đến trang thanh toán cho vé số: " + id);
+            // Sau này bạn sẽ dùng window.location.href = '/checkout?id=' + id;
+        }
+    </script>
+
+    
+</body>
+</html>
