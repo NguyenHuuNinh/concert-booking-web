@@ -1,29 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concert Ticket Booking System</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MUSIC TICKET - Concert Booking</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
 </head>
-<body>
+<body data-page="home">
+  <nav class="navbar">
+    <a class="logo" href="index.html">MUSIC TICKET</a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="#bookings">My Bookings</a>
+      <span class="nav-user" data-user-name></span>
+      <button class="btn-login" data-logout type="button">Logout</button>
+    </div>
+  </nav>
 
-    <nav class="navbar">
-        <div class="logo">MUSIC TICKET</div>
-        
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="events.html">Events</a>
-            <a href="login.html" class="btn-login">Login</a>
-        </div>
-        
-    </nav>
+  <header class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">Concert booking platform</p>
+      <h1>Book the night you will talk about all year.</h1>
+      <p>Explore live shows, compare ticket tiers, and reserve your seat in a simple booking flow.</p>
+      <div class="hero-actions">
+        <a href="events.html" class="btn-primary">View Events</a>
+        <a href="#bookings" class="btn-ghost">My Bookings</a>
+      </div>
+    </div>
+  </header>
 
-    <header class="hero">
-        <h1>Live Your Musical Passion</h1>
-        <p>Book your tickets today and never miss out on top-tier music events featuring your favorite artists.</p>
-        <a href="events.html" class="btn-buy" style="display:inline-block; padding: 12px 25px;">View Events</a>
-    </header>
+  <main>
+    <section class="stats-band" aria-label="Platform highlights">
+      <div>
+        <strong>4</strong>
+        <span>Featured shows</span>
+      </div>
+      <div>
+        <strong>12</strong>
+        <span>Ticket tiers</span>
+      </div>
+      <div>
+        <strong>24h</strong>
+        <span>Session support</span>
+      </div>
+    </section>
 
+    <section class="content-section">
+      <div class="section-heading">
+        <p class="eyebrow">Featured</p>
+        <h2>Upcoming Concerts</h2>
+      </div>
+      <div class="concert-grid" data-events-preview></div>
+    </section>
+
+    <section class="content-section booking-section" id="bookings">
+      <div class="section-heading">
+        <p class="eyebrow">Account</p>
+        <h2>My Bookings</h2>
+      </div>
+      <div class="booking-list" data-booking-list></div>
+    </section>
+  </main>
+
+  <div class="modal" data-modal hidden>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Close">×</button>
+      <div data-modal-content></div>
+    </div>
+  </div>
 </body>
 </html>

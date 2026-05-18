@@ -1,72 +1,43 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - MUSIC TICKET</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
 </head>
-<body>
-
-    <nav class="navbar">
-        <div class="logo">MUSIC TICKET</div>
-        
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="events.html">Events</a>
-            <a href="login.html" class="btn-login">Login</a>
-        </div>
-        
-    </nav>
-    <p id="error-message" style="color: red; text-align: center; display: none; font-weight: bold;"></p>
-
-    <div class="auth-container">
-        <div class="auth-box">
-            <h2>Login</h2>
-            <p>Welcome back! Please login to book your tickets.</p>
-            
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Your email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Your password" required>
-                </div>
-                
-                <button type="submit" class="btn-submit">Login</button>
-            </form>
-
-            <div class="divider">Or</div>
-
-            <button class="btn-facebook">
-                 Continue with Facebook
-            </button>
-
-            <p style="margin-top: 25px; font-size: 0.95rem; color: #666;">
-                Don't have account yet? 
-                <a href="register.html" style="color: #e94560; font-weight: bold;">Register now</a>
-            </p>
-        </div>
+<body data-page="login">
+  <nav class="navbar">
+    <a class="logo" href="login.html">MUSIC TICKET</a>
+    <div class="nav-links is-open">
+      <a href="login.html">Login</a>
+      <a href="register.html" class="btn-login">Register</a>
     </div>
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const errorType = urlParams.get('error');
-        const errorMsgElement = document.getElementById('error-message');
+  </nav>
 
-        if (errorType === 'login_required') {
-            errorMsgElement.innerText = "You need to login to your account.";
-            errorMsgElement.style.display = "block"; // Make the message visible
-        } 
-        else if (errorType === 'invalid') {
-            errorMsgElement.innerText = "Invalid email or password. Please try again.";
-            errorMsgElement.style.display = "block";
-        }
-    </script>
-</body>
-</html>
+  <main class="auth-container">
+    <section class="auth-box">
+      <p class="eyebrow">Welcome back</p>
+      <h1>Login</h1>
+      <p>Use your account to browse events and manage bookings.</p>
+      <div class="alert" data-auth-message hidden></div>
 
+      <form data-login-form>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="admin@gmail.com" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="123456" required>
+        </div>
+        <button type="submit" class="btn-submit">Login</button>
+      </form>
+
+      <p class="auth-note">Demo account: admin@gmail.com / 123456</p>
+      <p class="switch-link">Do not have an account? <a href="register.html">Register now</a></p>
+    </section>
+  </main>
 </body>
 </html>
